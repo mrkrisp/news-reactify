@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react'
 import { getNews } from '../../api/apiNews'
 import NewsBanner from '../../components/NewsBanner/NewsBanner'
 import { NewsList } from '../../components/NewsList/NewsList'
+import { Skeleton } from '../../components/Skeleton/Skeleton'
 import styles from './styles.module.css'
-
-const API_KEY = "6EZhXR3ph39mQBx3gQ9GCGkR7HC2w3jNI7IsUpmYYw0UQgLb"
 
 const Main = () => {
     const [news, setNews] = useState([])
@@ -33,8 +32,11 @@ const Main = () => {
                 <NewsList news={news} />
               </>
             ) : (
-                <h2>Loading...</h2>
-            )}
+              <>
+                <Skeleton />
+                <Skeleton count={10} type='item' />
+              </>
+            )}  
            
         </main>
     )
